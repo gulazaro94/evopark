@@ -1,0 +1,9 @@
+<%= flash[:alert] %>
+
+<%= form_with(url: authenticate_sessions_path) do %>
+  <%= text_field_tag(:email, '', placeholder: 'Email') %>
+  <br>
+  <%= password_field_tag(:password, '', placeholder: 'Password') %>
+  <br>
+  <%= submit_tag %>
+<% end %>

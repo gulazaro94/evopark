@@ -10,6 +10,11 @@
   </head>
 
   <body>
+    <% if current_user %>
+      <%= link_to 'Sign out', unauthenticate_sessions_path, method: :delete %>
+      <br>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
