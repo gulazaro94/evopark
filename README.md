@@ -1,24 +1,56 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Requirements
 
-Things you may want to cover:
+- Ruby 2.7.1
+- Docker & Docker compose
 
-* Ruby version
+## Steps to run the project in development mode
 
-* System dependencies
+Clone the repo
+```
+git clone git@github.com:gulazaro94/evopark.git
+cd evopark
+```
 
-* Configuration
+Install the dependencies
+```
+bundle install
+yarn install
+```
 
-* Database creation
+Start redis and mailcatcher
+```
+docker-compose up -d
+```
 
-* Database initialization
+Setup the database
+```
+bundle exec rails db:setup
+```
 
-* How to run the test suite
+Start sidekiq
+```
+bundle exec sidekiq
+```
+This will hold the terminal, open a new tab to continue
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+Start the Rails server
+```
+bundle exec rails s -b 0.0.0.0
+```
 
-* ...
+## Links
+
+Application
+
+http://localhost:3000
+
+Sidekiq
+
+http://localhost:3000/sidekiq
+
+Mailcatcher
+
+http://localhost:1080
