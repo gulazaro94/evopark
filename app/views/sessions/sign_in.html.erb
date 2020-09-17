@@ -1,9 +1,17 @@
+<h1>Log in</h1>
+
 <%= flash[:alert] %>
 
 <%= form_with(url: authenticate_sessions_path) do %>
-  <%= text_field_tag(:email, '', placeholder: 'Email') %>
-  <br>
-  <%= password_field_tag(:password, '', placeholder: 'Password') %>
-  <br>
-  <%= submit_tag %>
+  <div class="field">
+    <%= text_field_tag(:email, '', placeholder: 'Email') %>
+  </div>
+  <div class="field">
+    <%= password_field_tag(:password, '', placeholder: 'Password') %>
+  </div>
+  <div class="actions">
+    <%= submit_tag 'Log in' %>
+
+    <%= link_to 'Sign up', new_user_path%>
+  </div>
 <% end %>
