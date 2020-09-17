@@ -1,0 +1,42 @@
+<%= form_with(model: reminder, as: :reminder, local: true) do |form| %>
+  <% if reminder.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(reminder.errors.count, "error") %> prohibited this reminder from being saved:</h2>
+
+      <ul>
+        <% reminder.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :month_day, 'Month Day (Positive: first N day, Negative: last N day)' %>
+    <%= form.select :month_day, Reminder::VALID_MONTH_DAYS %>
+  </div>
+
+  <div class="field">
+    <%= form.label :time_object %>
+    <%= form.time_select :time_object %>
+  </div>
+
+  <div class="field">
+    <%= form.label :timezone %>
+    <%= form.select :timezone, ActiveSupport::TimeZone.all.map { |timezone| [timezone.to_s, timezone.tzinfo.name] } %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

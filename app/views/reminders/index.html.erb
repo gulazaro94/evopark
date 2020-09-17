@@ -1,1 +1,34 @@
-Reminders
+<p id="notice"><%= notice %></p>
+
+<h1>Reminders</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Month day</th>
+      <th>Time</th>
+      <th>Timezone</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reminders.each do |reminder| %>
+      <tr>
+        <td><%= reminder.title %></td>
+        <td><%= reminder.description %></td>
+        <td><%= reminder.month_day %></td>
+        <td><%= reminder.time_object.to_s(:time) %></td>
+        <td><%= reminder.timezone %></td>
+        <td><%= link_to 'Edit', edit_reminder_path(reminder) %></td>
+        <td><%= link_to 'Destroy', reminder, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Reminder', new_reminder_path %>
