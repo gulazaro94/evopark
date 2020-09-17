@@ -18,5 +18,7 @@ class SessionsController < ApplicationController
 
   def unauthenticate
     SessionManager.new(session).unauthenticate
+
+    redirect_to sign_in_sessions_path
   end
 end
